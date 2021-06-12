@@ -1,0 +1,37 @@
+Conduit funkciók
+(’Conduit Blogging App, Requirements (User Stories)’ dokumentum, 2120.05.31.; alapján)
+
+KÖVETELMÉNY_IDAKTORKÖVETELMÉNYELVÁRT EREDMÉNYFELTÉTEL(EK)KÖVETKEZMÉNYR01felhasználó (user)regisztrációfelhasználói fiók (account) létrejötte az app használatához (posztok elhelyezése, véleményezése)-az app indítása után megjelenõ regisztációs felületen
+-nincs még senki ezekkel az azonosító adatokkal regisztrálva-új user regisztrálva 
+-a regisztráció után bejelentkezve marad
+
+R02felhasználó (user)bejelentkezés az app-ba-blog bejegyzések kezelése, beírása
+-profil kezelése-bejelentkezés elõzõleg regisztrált adatokkal
+-nem fut egy példány-
+profil elérhetõ, módosíthatónincs már bejelentkezve
+- lehetõség  a bejegyzések létrehozására, módosítására, kezelésére
+-lehetõség a profil módosításáraR03felhasználó (user)kijelentkezés az app-ból-az aktív session lezárul
+-bejelentkezett user aktív sessionnel
+-klikkelés a kijelentkezés (’log out’) gombon-a felhasználói account-hoz nincs hozzáférés
+-megjelenik az app bejelentkezési oldala
+a kijelentkezés tényét jelzi az appR04felhasználó (user)követés-figyelmemre méltó posztok összegyûjtése (saját ’feed’)
+-más user tevékenységének követése-bejelentkezés az account-ba
+-a követett posztolók posztjai összegyûjtve saját feed-be
+-a saját feed-be gyûjtott posztok elérhetõkR05felhasználó (user)új posztbejegyzés-új poszt szerkesztésének és megosztásának lehetõsége-bejelentkezett felhasználó
+-a megfelelõ felületen a bejegyzés beírva, és mentve (klikkelés ’save’ gombon)-új poszt elkészült és elmentve
+-más felhasználók láthatják a posztotR06felhasználó (user)(bármely) bejegyzés megtekintése-bejegyzés kiválasztásának lehetõsége
+-a bejegyzés teljes tartalmának megtekintése egy képernyõn-bejelentkezett felhasználó
+-klikkel a kiválasztott bejegyzés címére a gyûjteményben (feed)-megjelenik egy képernyõ (’Artticle Details’) a kiválasztott bejegyzés részleteivelR07felhasználó (user)saját bejegyzések szerkesztése-saját, korábbi blogbejegyzések szerkesztésének lehetõsége- bejelentkezett felhasználó
+-kiválaszt egy saját bejegyzést
+-klikkel a bejegyzés szerkesztését engedélyezõ gombon a bejegyzés részleteit mutató lapon-megjelenik a bejegyzések szerkesztésére szolgáló felület a kiválasztott poszt tartalmával szerkeszthetõ módonR08felhasználó (user)saját bejegyzés törlése-saját, korábbi blogbejegyzések törlésénekszerkesztésének lehetõsége-bejelentkezett felhasználó
+-kiválaszt egy saját bejegyzést
+-klikkel a bejegyzés törlését szerkesztését engedélyezõ gombon (’Delete Article’) a bejegyzés részleteit mutató lapon
+-a blogbejegyzés véglegesen és rekonstruálhatatlanul törölveR09felhasználó (user)kedvenc bejegyzés kiválasztása-lehetõség posztokat megjelölni és a megjelölést eltávolítani a bejegyzésrõl alkotott kedvezõ vélemény, vagy ellenkezõjének kifejezésére-bejelentkezett felhasználó
+-kiválaszt egy bejegyzést
+-szív alakú ikont kapcsol be vagy ki-a poszt kedvenckén jelenik meg, vagy törlõdik, kijelezve a kedvenc statusok számát isR10felhasználó (user)lapozás a feed-ben-a felhasználó a sok bejegyzést tartalmazó feed-ben is kényelmesen lapozhat-több mint 10 bejegyzés van a feed-ben
+-a bejelentkezett felhasználó mozogni akar a feed listában-a bejegyzések laponként rizes csoportban jelennek meg, a lapok között lehet váltaniR11felhasználó (user)saját feed-a felhasználó összegyûjtheti a rendelkezésre álló teljes listából az öt érdeklõ bejegyzéseket egy saját feed-be-bejelentkezett felhasználó
+-feed-et tartalmazó képernyõ látszik
+-a kiválasztott (összegyûjtött) bejegyzések látszanak a címükkel és az absztraktal együttR12felhasználó (user)bejegyzések címkézés (tag)-a felhasználó címkével láthatja el a bejegyzést, hogy más felhasználók könnyebben megtalálják az õket érintõ bejegyzéséeket-felhasználó blogbejegyzéséhez
+-tag-ot illeszt-a bejegyzéshez tag tartozik
+-más felhasználó a tag-on keresztül könnyen elérhetik a bejegyzéstR13felhasználó (user)címkézett blogbejegyzések gyûjteménye-a felhasználó a címke kiválasztásával létrehozza az azonos tag-el ellátott bejegyzések egy csoportját-bejelentkezett felhasználó
+-választ a rendelkezésre álló tag listából-megjelenik az adott tag-el ellátott blogbejegyzések egy gyûjteménye
