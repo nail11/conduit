@@ -1,0 +1,18 @@
+Conduit funkciók – nem táblázatos formában
+(’Conduit Blogging App, Requirements (User Stories)’ dokumentum, 2120.05.31.; alapján)
+
+
+R 01 regisztráció – felhasználói fiók létrehozása név, érvényes jelszó, emailcím megadásával. Regisztráció után bejelentkezve marad. 
+R02 bejelentkezés – a regisztráció során megadott email, jelszó párossal bejelentkezik az app-ba. Bejegyzést írhat, módosíthat, kereshet. Profilját módosíthatja.
+R03 kijelentkezés – felhasználó ’log out’ gombra klikke, lezárul a session, a felhasználó láthatóan kijelentkezve
+R04 követés – a felhasználó követni tudja más felhasználók tevékenységét, és bejegyzéseiket külön gyûjteménybe (feed) tudja rendezni, és ott elérni.
+R05 új posztbejegyzés – a bejelentkezett felhasználó a felületén aktivált ’New Article’ gombbal blogbejegyzés rögzítésére alkalmas felületet nyit meg, és a bejegyzés elkészülte után elmenti (’Publish Article’)
+R06 bejegyzések megtekintése – a bejelentkezett felhasználó a képernyõn látható bejegyzésekre (címre, összefoglalóra) klikkelve megnyithatja azokat, és láthatóvá válik a teljes bejegyzés
+R07 saját bejegyzések szerkesztése – a bejelentkezett felhasználó ráklikkelve a saját bejegyzésére az megnyílik (l. elõbb), és az Edit gombot aktiválva megnyithatja blogbejegyzés szerkesztésére szolgáló felületet a bejegyzés szövegével együtt, szerkesztésre készen.
+R08 saját bejegyzés törlése - a bejelentkezett felhasználó ráklikkelve a saját bejegyzésére az megnyílik (l. elõbb), és a Delete gombot aktiválva véglegesen és helyreállíthatatlanul törli a bejegyzést.
+R09 egy bejegyzés kedvelésének jelölése – a bejelentkezett felhasználó kiválasztja a feed egy bejegyzését és aktiválja/deaktiválja  a kedvelést jelentõ ikont (szív), a véleményétõl függõen.
+R10 lapozás a feed-ben – ha több, mit 10 bejegyzés van a feed-ben, akkor lehetõség van lapozni a tízes csoportok között.
+R11 feed kialakítása – a felhasználó kialakíthat érdeklõdésére számot tartó csoportot a bejegyzésekbõl, amit saját feed néven csoportként elérhet, az egyes bejegyzések összefoglalója segít egy adott bejegyzés kiválasztásában.
+R12 bejegyzések címkézése (tag) – a felhasználó egy bejegyzés elkészítésekor a bejegyzésre jellemzõ címkével láthatja el azt, ami késõbb lehetõvé teszi a bejegyzések könnyû keresését tag-en keresztül.
+R13 bejegyzés keresése tag segítségével – bejelentkezés után a felhasználó talál egy tag listát, amelybõl kattintással választva megjelenik a tag-hez tartozó feed.
+
