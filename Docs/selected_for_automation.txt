@@ -1,0 +1,9 @@
+Automatizálásra jelölt tesztek
+
+A01	Restruk_home_TC_08		felület automatizálás		Magas prioritású funkció, sokszor ismételt futtatás, sok tesztadat.
+A02	Restruk_home_TC_16		felület automatizálás		Sok tesztadat és ezért sok ismételt futtatás szükséges. Maga prioritás.	
+A03	Restruk_home_TC_12		API teszt automatizálás		Többszöri futtatás, a bejelentkezési lap elemeinek bármelyikére klikkelve sem   										elérhetõ az adatbázis bejelentkezés nélkül. Magas prioritás.
+A04	Restruk_home_TC_13		API teszt automatizálás		Többszöri futtatás, sok tesztadat, köztük üres mezõk vizsgálata is. 1-es prioritás.
+Nem jelölt
+Restruk_home_TC_01, Restruk_home_TC_02, Restruk_home_TC_03 Restruk_home_TC_04, Restruk_home_TC_05, Restruk_home_TC_06, Restruk_home_TC_07, Restruk_home_TC_09, Restruk_home_TC_10, Restruk_home_TC_11, Restruk_home_TC_14, Restruk_home_TC_15, 
+	
