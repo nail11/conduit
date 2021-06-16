@@ -5,7 +5,7 @@
   "url": "http://localhost:1667",
   "tests": [{
     "id": "9ec00710-cc9c-4758-aac8-bf8fa4ce8cd3",
-    "name": "Opening new post page",
+    "name": "TC_13 Opening new post page",
     "commands": [{
       "id": "aea93143-ff2d-4ab3-aaed-99443a8b2934",
       "comment": "",
@@ -135,6 +135,159 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "26728a18-2bda-46bc-81af-d0b9e659cbeb",
+    "name": "TC_14 Editing existing post",
+    "commands": [{
+      "id": "03aeab15-0ee6-4c17-81d4-fe3ca7fc12f2",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "057d765f-861c-4aa2-8d52-e84ff917ee7e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1355x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8a4157e6-5d65-40f4-b735-c6450d6e6f9d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.article-preview:nth-child(13) h1",
+      "targets": [
+        ["css=.article-preview:nth-child(13) h1", "css:finder"],
+        ["xpath=//div[@id='app']/div/div[2]/div/div/div[2]/div/div/div[13]/a/h1", "xpath:idRelative"],
+        ["xpath=//div[13]/a/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'valami')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c93b253a-40ee-45a3-93db-bcf38b612e4b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-outline-secondary > span",
+      "targets": [
+        ["css=.btn-outline-secondary > span", "css:finder"],
+        ["xpath=//div[@id='app']/div/div/div/div/span/a/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6b68e5be-b977-4606-afb4-c18dc0a344be",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(3) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=//div[@id='app']/div/div/div/div/form/fieldset/fieldset[3]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "21574878-4836-4bb5-884d-de8e7fa4f0a4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(3) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=//div[@id='app']/div/div/div/div/form/fieldset/fieldset[3]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea9f15c7-99a3-4bec-aa60-e6ca461ffd3f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ti-new-tag-input",
+      "targets": [
+        ["css=.ti-new-tag-input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div/div/form/fieldset/fieldset[4]/div/div/ul/li/input", "xpath:idRelative"],
+        ["xpath=//li/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5354db0e-4a0d-4dab-adbf-1f94f5a94f5e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ti-new-tag-input-wrapper",
+      "targets": [
+        ["css=.ti-new-tag-input-wrapper", "css:finder"],
+        ["xpath=//div[@id='app']/div/div/div/div/form/fieldset/fieldset[4]/div/div/ul/li", "xpath:idRelative"],
+        ["xpath=//div/div/ul/li", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a711c57f-6383-411d-8455-46952b88d786",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ti-new-tag-input",
+      "targets": [
+        ["css=.ti-new-tag-input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div/div/form/fieldset/fieldset[4]/div/div/ul/li/input", "xpath:idRelative"],
+        ["xpath=//li/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ba5e3ac1-bbd1-45ef-a1c4-f9ff1569a520",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ti-new-tag-input",
+      "targets": [
+        ["css=.ti-new-tag-input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div/div/form/fieldset/fieldset[4]/div/div/ul/li/input", "xpath:idRelative"],
+        ["xpath=//li/input", "xpath:position"]
+      ],
+      "value": "valami akármi"
+    }, {
+      "id": "6b434fed-cc36-4e77-a9e8-d67b00911077",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Publish Article')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "644e6e1b-e47c-44fd-b774-970c1ae936a4",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Publish Article')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7eb7aa6d-d4fd-4593-b8ef-4c758e3ede20",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Publish Article')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "d5553faf-2e10-4cd9-ad70-e1d058877725",
+    "name": "TC_15 Deleting post",
+    "commands": []
   }],
   "suites": [{
     "id": "d1ebca45-b1dd-4464-9753-e2801cc6e2ea",
