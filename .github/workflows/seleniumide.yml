@@ -32,19 +32,19 @@ jobs:
         node-version: '14'
     - name: Install Selenium Side Runner
       run: |
-       npm install -g selenium-side-runner
+        npm install -g selenium-side-runner
     - name: Install Chrome
       run: |
-          sudo apt install google-chrome-stable
+        sudo apt install google-chrome-stable
     - name: Install seleniumbase
-          run:pip install seleniumbase
+        run:pip install seleniumbase
     - name: Install chromedriver
       run: |
-          seleniumbase install chromedriver
+        seleniumbase install chromedriver
     - name: Run Tests
       run: |
-          selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" registration.side
-          selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" login.side
-          selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" post.side
+        selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" registration.side
+        selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" login.side
+        selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" post.side
 
       
