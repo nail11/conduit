@@ -44,7 +44,10 @@ jobs:
     - name: Run Tests
       run: |
         selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" registration.side
+    - run: |
         selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" login.side
+    - run: |
         selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" post.side
+       
 
       
