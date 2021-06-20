@@ -28,7 +28,7 @@ jobs:
   - name: Docker building Conduit
     run: docker-compose up -d    
   
-  - name: install Nodejs
+  - name: Install Nodejs
     uses: actions/setup-node@v2
     with:
         node-version: '14'
