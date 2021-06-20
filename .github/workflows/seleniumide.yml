@@ -25,9 +25,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     uses: actions/checkout@v2
     
-  - name: Docker building Composer
-    run: |
-        docker-compose up -d
+  - name: Docker building Conduit
+    run:|
+      docker-compose up -d
         
   - name: Set up Python 3.9
     uses: actions/setup-python@v2
@@ -40,27 +40,28 @@ jobs:
         node-version: '14'
         
   - name: Install Selenium Side Runner
-    run: |
+    run:|
         npm install -g selenium-side-runner
         
   - name: Install Chrome
-    run: |
+    run:|
         sudo apt install google-chrome-stable
+        
   - name: Install seleniumbase
     run: pip install seleniumbase
     
   - name: Install chromedriver
-    run: |
+    run:|
         seleniumbase install chromedriver
         
   - name: Run Tests registration.side
-    run: |
+    run:|
         selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" seleniumside-tests/registration.side
   - name: Run Tests login.side.
-  - run: |
+  - run:|
         selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" seleniumside-tests/login.side
   - name: Run Tests post.side
-  - run: |
+  - run:|
         selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" seleniumside-tests/post.side
        
 
