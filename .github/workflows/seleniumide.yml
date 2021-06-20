@@ -8,9 +8,9 @@ on:
   push:
     branches: [ master ]
  
-# defaults:
- # run:
-   # working-directory: seleniumide-tests -beállítható ez?
+defaults:
+  run:
+    working-directory: seleniumide-tests
   
 # A workflow run is made up of one or more jobs that can run sequentially or in paralle
 jobs:
@@ -46,11 +46,11 @@ jobs:
     run: seleniumbase install chromedriver
         
   - name: Run Tests registration.side
-    run: selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" seleniumside-tests/registration.side
+    run: selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" registration.side
   - name: Run Tests login.side.
-    run: selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" seleniumside-tests/login.side
+    run: selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" login.side
   - name: Run Tests post.side
-    run: selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" seleniumside-tests/post.side
+    run: selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" post.side
        
 
       
