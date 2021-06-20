@@ -10,7 +10,7 @@ on:
  
 # defaults:
  # run:
-   # working-directory: seleniumide-tests
+   # working-directory: seleniumide-tests -beállítható ez?
   
 # A workflow run is made up of one or more jobs that can run sequentially or in paralle
 jobs:
