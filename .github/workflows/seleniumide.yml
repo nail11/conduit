@@ -60,10 +60,10 @@ jobs:
     run:|
         selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" seleniumside-tests/registration.side
   - name: Run Tests login.side.
-  - run:|
+    run:|
         selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" seleniumside-tests/login.side
   - name: Run Tests post.side
-  - run:|
+    run:|
         selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless]" seleniumside-tests/post.side
        
 
