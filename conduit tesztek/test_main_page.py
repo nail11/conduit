@@ -25,15 +25,15 @@ butts = driver.find_elements_by_xpath('//*[@id="app"]/nav/div/ul/li/a')
 
 def main_butts_activate(xpath):
 
-    time.sleep(2)
+    time.sleep(1)
     xpath.click()
-    time.sleep(3)
+    time.sleep(1)
     assert driver.current_url == xpath.get_attribute("href")
-    driver.switch_to_window(home_window)
+
 
 for i, button in enumerate(butts):
     main_butts_activate(butts[i])
-
+    driver.switch_to.window(home_window)
 
 
 #driver.close()
