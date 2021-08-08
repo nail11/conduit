@@ -13,9 +13,10 @@ from selenium.webdriver.chrome.options import Options
 from random import randint
 import pytest
 import time
+#import nuts_and_bolts
 
 options = Options()
-#
+
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
 
@@ -64,8 +65,8 @@ signup_butt = driver.find_element_by_xpath(elements_xpath + 'button')
  #              and one digit
 
 test_data_source = {"Username": [["-"], ["testuserX", 1, "testuser1"]],
-                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["test@domain.uk", "w@rtz.bg", "abc@def.hu"],
-                              ["testuser@domain.uk", "testuser1@example.com", "testuser2@example.com", "testuser3@example.com"]],
+                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["test@domain.uk","klm@no.nl" , "abc@def.hu"],
+                              ["testuser@domain.uk", "testuser1@example.com", "testuser2@example.com", "testuser3@example.com", "w@rtz.bg"]],
                     "Password": [[12345678, "1Aabcde", "11111111", "ABCDEFGH", "Abcdefgh", "abcdefg1"],
                                  ["Abcdefg1", "@Abcdef1"], ["Abcd123$"]]
                     }
