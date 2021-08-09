@@ -45,6 +45,7 @@ invalid_email = "Email must be a valid email."
 invalid_pass = "Password must be 8 characters long and include 1 number, 1 uppercase letter, " \
                "and 1 lowercase letter."
 reused_email = "Email already taken."
+signup_success = "Your registration was successful!"
 
 field_val = []  # a list of "empty", "good", "bad" or "reused" according to the values
                 # one would like to give the input fields. The order is "username", "email" and "password".
@@ -65,8 +66,10 @@ signup_butt = driver.find_element_by_xpath(elements_xpath + 'button')
  #              and one digit
 
 test_data_source = {"Username": [["-"], ["testuserX", 1, "testuser1"]],
-                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["test@domain.uk","klm@no.nl" , "abc@def.hu"],
-                              ["testuser@domain.uk", "testuser1@example.com", "testuser2@example.com", "testuser3@example.com", "w@rtz.bg"]],
+                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["viki@ezaz.hu","test4@test.te",
+                                                                                       "ab@def.hu"],
+                              ["testuser@domain.uk", "testuser1@example.com", "testuser2@example.com",
+                               "testuser3@example.com","klm@no.nl", "w@rtz.bg", "test@domain.uk"]],
                     "Password": [[12345678, "1Aabcde", "11111111", "ABCDEFGH", "Abcdefgh", "abcdefg1"],
                                  ["Abcdefg1", "@Abcdef1"], ["Abcd123$"]]
                     }
@@ -86,7 +89,7 @@ def input_elements_names(element_list):
         input_names.append(input_name)
     return input_names
 
-    # randomly getting test data for the "sign up" input fields from "empty", "good", "bad" and "reused" data pools
+    # randomly getting test data for the "sign up" input fields from "empty", "good", "bad" and "used" data pools
 def get_test_data(field_val):
     result = []
     value = ""
@@ -104,7 +107,7 @@ def get_test_data(field_val):
             data_source = data_list[i][1]
             v = randint(0, len(data_source) - 1)
             value = data_source[v]
-        elif field[i] == "reused":
+        elif field[i] == "used":
             data_list = list(test_data_source.values())
             data_source = data_list[i][2]
             v = randint(0, len(data_source) - 1)
@@ -128,8 +131,9 @@ def fill_up_input_fields(un, em, pw):
             click_and_send(j, em)
         if input_name == "Password":
             click_and_send(j, pw)
+    print(f"Új tesztadatok: {un}, {em}, { pw}")
             
-# warning windows and messages ("Value_list" a list of 'empty' or 'bad' or 'good', the values
+# warning windows and messages ("Value_list" a list of 'empty' or 'bad' or 'good',or 'used' the values
 #                               corresponding with  entry values of 'test_data_list')
 def warning(value_list):
     warning = driver.find_element_by_xpath(warn_window_path)
@@ -149,11 +153,11 @@ def warning(value_list):
             return invalid_email
         if value_list[2] == "bad":
             return invalid_pass
-        if value_list[1] == "reused":
+        if value_list[1] == "used":
             return reused_email
-        #if value_list[2] == "reused":
-            #return "Reused email"
-
+        if value_list[1] == "good":
+            return signup_success
+        
 try:
     # start testing under different conditions
 
@@ -167,13 +171,13 @@ try:
     fill_up_input_fields(test_data_list[0], test_data_list[1], test_data_list[2])
     time.sleep(1)
     signup_butt.click()
-    time.sleep(2)
+    time.sleep(1)
 
     assert warning(field_val) == warning_text
 
     print("TC01 - empty fields")
     print("Test passed - Message: " +warning_text)
-    print( )
+    print()
     warn_accept_butt.click()
 
     # TC 02 -  wrong e-mail, empty password
@@ -182,7 +186,7 @@ try:
     test_data_list = get_test_data(field_val)
 
     fill_up_input_fields(test_data_list[0], test_data_list[1], test_data_list[2])
-    time.sleep(1)
+    #time.sleep(1)
     signup_butt.click()
     time.sleep(2)
 
@@ -195,13 +199,12 @@ try:
 
     # TC 03 -  reused e-mail, good password
 
-    field_val = ["good", "reused", "good"]
+    field_val = ["good", "used", "good"]
     test_data_list = get_test_data(field_val)
 
     fill_up_input_fields(test_data_list[0], test_data_list[1], test_data_list[2])
-    time.sleep(1)
     signup_butt.click()
-    time.sleep(4)
+    time.sleep(2)
 
     assert warning(field_val) == warning_text
 
@@ -216,9 +219,8 @@ try:
     test_data_list = get_test_data(field_val)
 
     fill_up_input_fields(test_data_list[0], test_data_list[1], test_data_list[2])
-    time.sleep(1)
     signup_butt.click()
-    time.sleep(4)
+    time.sleep(2)
 
     assert warning(field_val) == warning_text
 
@@ -233,9 +235,8 @@ try:
     test_data_list = get_test_data(field_val)
 
     fill_up_input_fields(test_data_list[0], test_data_list[1], test_data_list[2])
-    time.sleep(1)
     signup_butt.click()
-    time.sleep(4)
+    time.sleep(2)
 
     assert warning(field_val) == warning_text
 
@@ -243,6 +244,22 @@ try:
     print("Test passed - Message: " + warning_text)
     print()
     warn_accept_butt.click()
+
+    # TC 06 - good username, good email and good password -successful sign up
+
+    field_val = ["good", "good", "good"]
+    test_data_list = get_test_data(field_val)
+
+    fill_up_input_fields(test_data_list[0], test_data_list[1], test_data_list[2])
+    signup_butt.click()
+    time.sleep(2)
+
+    assert warning(field_val) == warning_text
+
+    print("TC06 - good username, good e_mail, good password - successful sign up")
+    print("Test passed - Message: " + warning_text)
+    print()
+    #warn_accept_butt.click()
 
 finally:
     driver.close()
