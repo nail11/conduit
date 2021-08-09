@@ -17,13 +17,13 @@ import time
 
 
 options = Options()
-options.add_argument('--headless')
-options.add_argument('--disable-gpu')
+#options.add_argument('--headless')
+#options.add_argument('--disable-gpu')
 
 # driver = webdriver.Chrome(ChromeDriverManager().install())
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
-url = "http://localhost:1667/"
+url = "http://localhost:1667/#/"
 
 # general settings
 

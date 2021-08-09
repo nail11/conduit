@@ -1,5 +1,5 @@
-# Testing the "sign up" function with valid ("good") and invalid ("bad") username, password
-# and email data
+# Testing the "sign up" function with empty,  valid ("good") invalid ("bad") and previously
+# used ("used") username, password and email data
 # ...................................................................................
 
 # environment
