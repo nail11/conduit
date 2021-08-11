@@ -28,33 +28,39 @@ url = "http://localhost:1667/#/"
 # general settings
 
 driver.get(url)
+
+    # elements
 butts = driver.find_elements_by_xpath('//*[@id="app"]/nav/div/ul/li/a')
 home_butt = driver.find_element_by_xpath('//*[@id="app"]/nav/div/ul/li[1]')
 
+    # variables, data
+
+butt_names = ("Home", "Sign in", "Sign up")
 def main_butts_activate(button):
     button.click()
     time.sleep(1)
 
+# function
 
 def button_test(butts):
     for i, button in enumerate(butts):
         button = butts[i]
+        butt_name = butt_names[i]
         main_butts_activate(button)
-        assert driver.current_url == button.get_attribute("href"), "A az url nem egyezik a cél url-el"
-        print(driver.title)
-        print("Az url egyezik a cél url-el")
+        assert driver.current_url == button.get_attribute("href"), "The url is not identical to the target url"
+        print(f"After pressing button {butt_name}")
+        print("The url identical to the target url")
         print(button.get_attribute("href"))
+        print()
 
 
-#TC .. testing button's present and activity
+#TC .. testing main page button's availability and function
+
+print("TC .. testing main page button's availability and function\n")
 
 button_test(butts)
-
 home_butt.click()
 
-#TC .. testing
+print("Test passed!")
 
-
-
-
-#driver.close()
+driver.close()
