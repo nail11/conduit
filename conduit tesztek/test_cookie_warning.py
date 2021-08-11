@@ -1,4 +1,4 @@
-# Testing the "sign in" function with valid and invalid data.
+# Testing the "cookie" window and the effect of accepting the warning
 # ...................................................................................
 
 # environment
@@ -12,12 +12,12 @@ from selenium.webdriver.chrome.options import Options
 from random import randint
 import pytest
 import time
-import nuts_and_bolts
+#import nuts_and_bolts
 
 options = Options()
 
-#options.add_argument('--headless')
-#options.add_argument('--disable-gpu')
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
 
 # driver = webdriver.Chrome(ChromeDriverManager().install())
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
@@ -43,24 +43,24 @@ try:
     if cookie_panel.is_displayed():
         accept.click()
         cookie_panel_empty = driver.find_element_by_class('//*[@id="cookie-policy-panel"]')
-
 except:
-    print("Test case 01 passed: ")
-    print("cookie_panel is not reachable after clicking on accept button")
+    print("Test case .. - testing cookies allert")
+    print("Cookie panel is not reachable after clicking on accept button\n")
+    print("Test passed!")
 
-    driver.close()
+    #driver.close()
 
     # TC 02
 
-    driver.get(url)
+    #driver.get(url)
 
-    if cookie_panel.is_displayed():
-        accept.click()
-        cookie_panel_empty = driver.find_element_by_class('//*[@id="cookie-policy-panel"]')
+    #if cookie_panel.is_displayed():
+        #accept.click()
+        #cookie_panel_empty = driver.find_element_by_class('//*[@id="cookie-policy-panel"]')
 
-else:
-    print("Test case 02 passed: ")
-    print("cookie_panel is not reachable after clicking on decline button")
+#else:
+    #print("Test case 02 passed: ")
+    #print("cookie_panel is not reachable after clicking on decline button")
 
 finally:
     driver.close()
