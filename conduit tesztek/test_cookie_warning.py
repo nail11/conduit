@@ -38,29 +38,15 @@ accept = driver.find_element_by_xpath('//*[@id="cookie-policy-panel"]/div/div[2]
 # Tests
 
 try:
-    # TC 01
 
     if cookie_panel.is_displayed():
         accept.click()
         cookie_panel_empty = driver.find_element_by_class('//*[@id="cookie-policy-panel"]')
+        accept.click()
 except:
     print("Test case .. - testing cookies allert")
     print("Cookie panel is not reachable after clicking on accept button\n")
     print("Test passed!")
-
-    #driver.close()
-
-    # TC 02
-
-    #driver.get(url)
-
-    #if cookie_panel.is_displayed():
-        #accept.click()
-        #cookie_panel_empty = driver.find_element_by_class('//*[@id="cookie-policy-panel"]')
-
-#else:
-    #print("Test case 02 passed: ")
-    #print("cookie_panel is not reachable after clicking on decline button")
 
 finally:
     driver.close()
