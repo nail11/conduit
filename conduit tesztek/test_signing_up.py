@@ -24,11 +24,12 @@ options.add_argument('--disable-gpu')
 # driver = webdriver.Chrome(ChromeDriverManager().install())
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
-url = "http://localhost:1667/"
-
 # general settings for getting to sign_up window
 
+url = "http://localhost:1667/"
+
 driver.get(url)
+
 main_butts = driver.find_elements_by_xpath('//*[@id="app"]/nav/div/ul/li/a')
 main_butts[2].click()
 
@@ -66,10 +67,11 @@ signup_butt = driver.find_element_by_xpath(elements_xpath + 'button')
 #              and one digit
 
 test_data_source = {"Username": [["-"], ["testuserX", 1, "testuser1"]],
-                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["viki@ezaz.hu", "test5@test.ke",
-                                                                                       "ab@def.hu", "teszt@teszt.te"],
+                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["viki1@ezaz.hu", "test6@test.ke",
+                                                                                       "abc@defg.hu",
+                                                                                       "teszt@teszt1.te"],
                               ["testuser@domain.uk", "testuser1@example.com", "testuser2@example.com",
-                               "testuser3@example.com", "klm@no.nl", "w@rtz.bg", "test@domain.uk"]],
+                               "testuser3@example.com", "klm@no.nl", "w@rtz.bg", "test@domain.uk", "ab@defg"]],
                     "Password": [[12345678, "1Aabcde", "11111111", "ABCDEFGH", "Abcdefgh", "abcdefg1"],
                                  ["Abcdefg1", "@Abcdef1"], ["Abcd123$"]]
                     }
