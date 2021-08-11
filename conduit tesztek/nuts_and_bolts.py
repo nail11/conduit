@@ -1,5 +1,9 @@
 # General elements, variables and functions for Conduit application testing
+input_butt_path = '//*[@id="app"]/div/div/div/div/form/button'
 
+def element_by_path(xpath):
+    element = driver.find_element_by_xpath(xpath)
+    return element
 
 def input_elements_list(xpath):
     input_elements = driver.find_elements_by_xpath(xpath)
