@@ -35,10 +35,15 @@ main_butts[2].click()
 
 # data - elements, variables etc.
 
-# reg_failed = "/html/body/div[2]/div/div[2]"
+    # elements
+
+warn_window_title_path = "/html/body/div[2]/div/div[2]"
 warn_window_path = "/html/body/div[2]/div"
 warn_text_path = "/html/body/div[2]/div/div[3]"
 warn_accept_path = "/html/body/div[2]/div/div[4]/div/button"
+
+    # messages
+
 user_req = "Username field required."
 email_req = "Email field required."
 pass_req = "Password field required."
@@ -48,8 +53,12 @@ invalid_pass = "Password must be 8 characters long and include 1 number, 1 upper
 reused_email = "Email already taken."
 signup_success = "Your registration was successful!"
 
+    # variables
+
 field_val = []  # a list of "empty", "good", "bad" or "reused" according to the values
-# one would like to give the input fields. The order is "username", "email" and "password".
+                # one would like to give the input fields. The order is "username", "email" and "password".
+warning_title = "" # the title of the message window
+warning_text = ""  # warning or message in the jumping up window
 
 # elements on the "sign_up" page
 
@@ -67,7 +76,7 @@ signup_butt = driver.find_element_by_xpath(elements_xpath + 'button')
 #              and one digit
 
 test_data_source = {"Username": [["-"], ["testuserX", 1, "testuser1"]],
-                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["viki1@ezaz.hu", "test6@test.ke",
+                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["viki1@ezaz.hu", "test7@test.pe",
                                                                                        "abc@defg.hu",
                                                                                        "teszt@teszt1.te"],
                               ["testuser@domain.uk", "testuser1@example.com", "testuser2@example.com",
@@ -268,11 +277,11 @@ try:
     time.sleep(2)
 
     assert warning(field_val) == warning_text
-
+    warning_title = driver.find_element_by_xpath(warn_window_title_path).text
     print("TC06 - good username, good e_mail, good password - successful sign up")
-    print("Test passed - Message: " + warning_text)
+    print("Test passed - Message: " + warning_title + "" + warning_text)
     print()
-    # warn_accept_butt.click()
+
 
 finally:
     driver.close()
