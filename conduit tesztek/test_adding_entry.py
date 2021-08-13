@@ -26,7 +26,7 @@ driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
 # PREPARATIONS FOR GETTING TO "New Article" WINDOW
 
-url = "http://localhost:1667/#/login"   # one must be signed in to make the search for new entry possible
+url = "http://localhost:1667/#/login"   # one must be signed in to be able to search for and delete the new entry
                                         # or, in other words, to fulfil the precondition
 
 driver.get(url)
