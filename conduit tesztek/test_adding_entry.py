@@ -148,4 +148,4 @@ print(message2+saved_text2.text)
 print()
 print(message3)
 
-driver.close()
+driver.quit()
