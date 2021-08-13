@@ -1,4 +1,4 @@
-# Testing deletion an article entry
+# Testing the action of adding a new article entry
 #
 # ...................................................................................
 
