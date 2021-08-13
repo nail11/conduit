@@ -1,4 +1,4 @@
-# Testing the action of adding a new article entry
+﻿# Testing deletion of an article entry
 #
 # ...................................................................................
 
@@ -7,156 +7,145 @@ import selenium
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.ui import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
-from random import randint
+import random
 import pytest
 import time
-
-import nuts_and_bolts
+import string
+import conduitdata
 
 options = Options()
 
-#options.add_argument('--headless')
-#options.add_argument('--disable-gpu')
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
 
-# driver = webdriver.Chrome(ChromeDriverManager().install())
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
 # PREPARATIONS FOR GETTING TO "New Article" WINDOW
 
-url = "http://localhost:1667/#/login"   # one must be signed in to make the search for new entry possible
-                                        # or, in other words, to fulfil the precondition
+url = "http://localhost:1667/#/login"   # one must be signed in to be able to delete the new entry 
+                                        # and to fulfil the precondition
 
 driver.get(url)
 
-#..elements for setting up environment
-
-saved_texts_path = '//*[@id="app"]/div/div[2]/div/div[1]/div[2]/div/div/div'
-new_art_butt_path = '//*[@id="app"]/nav/div/ul/li[2]/a'
-
-email_field = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset[1]/input')
-passw_field = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset[2]/input')
-input_butt = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/button')
-new_art_butt =driver.find_element_by_xpath('//*[@id="app"]/nav/div/ul/li[2]/a')
-
-email = "testuser1@example.com"
-passwd = "Abcd123$"
-
-saved_texts1 = []
-
-# ..setting up environment
-time.sleep(1)
-email_field.send_keys(email)
-passw_field.send_keys(passwd)
-input_butt.click()
-time.sleep(1)
-saved_texts1 = driver.find_elements_by_xpath(saved_texts_path)
-#new_art_butt.click()
-time.sleep(1)
-
-# MAIN TASK
-
-# data - elements, variables etc.
-
-#.. elements
-
-#..main window elements
-
-#home_but_path = '//*[@id="app"]/nav/div/ul/li[1]/a'
-
-#..input elements
-
-#art_title_text = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[1]/input')
-#art_summ_text = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[2]/input')
-#art_body_text = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[3]/textarea')
-#art_tag_text = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[4]/div/div/ul/li/input')
-#pub_butt = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/button')
-
-# ..containers for saved text
-
-title_cont_path = '/html/body/div[1]/div/div[1]/div/h1'
-main_text_cont_path = '//*[@id="app"]/div/div[2]/div[1]/div/div[1]/p'
-tag_cont_path = '//*[@id="app"]/div/div[2]/div[1]/div/div[2]/a'
-
-# messages
-
-#message01 = "Article title: "
-#message02 = "Article body text: "
-#message03 = "Article tag: "
-#message1 = "The entry data and the test data are identical !"
-#message2 = "Az új bejegyzés elmentve:\n\n"
-#message3 = "Test passed ! "
-#err_message1 = "Test failed ! The saved (entry) data and the test data are not identical !"
-#err_message2 = "Test failed ! New entry hasn't been created !"
-
-# variables
-
-saved_texts2 = driver.find_elements_by_xpath(saved_texts_path)
-
 # functions
+
+def sign_in():
+    element_by_path(email_input_path).send_keys(email)
+    element_by_path(password_input_path).send_keys(passwd)
+    element_by_path(input_butt_path).click()
+    #time.sleep(1)
 
 def element_by_path(xpath):
     element = driver.find_element_by_xpath(xpath)
     return element
 
+def elements_list_by_pass(xpath):
+    elements_list = driver.find_elements_by_xpath(xpath)
+    return elements_list
+
 def text_feeding_in(text, field):
     for letter in text:
         field.send_keys(letter)
 
+def new_article(source_list,field_list):
+    for i in range(len(source_list)):
+        text_feeding_in(source_list[i],field_list[i])
+    element_by_path(pub_butt_path).click()
+
+def article_id(element_id): # can be 'last' or a figure (index of element in a list)
+    if element_id == 'last':
+        saved_arts = elements_list_by_pass(saved_arts_path)
+        element_to_del = saved_arts[len(saved_arts) - 1]
+        return element_to_del
+    else:
+        saved_arts = elements_list_by_pass(saved_arts_path)
+        element_to_del = saved_arts[int(element_id)]
+        return element_to_del
+
+#..elements for setting up environment and on different pages
+
+home_butt_path = '//*[@id="app"]/nav/div/ul/li[1]'
+new_art_butt_path = '//*[@id="app"]/nav/div/ul/li[2]/a'
+
+email_input_path = '//*[@id="app"]/div/div/div/div/form/fieldset[1]/input'
+password_input_path = '//*[@id="app"]/div/div/div/div/form/fieldset[2]/input'
+input_butt_path = '//*[@id="app"]/div/div/div/div/form/button'
+
+title_path = '//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[1]/input'
+summ_path = '//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[2]/input'
+main_path = '//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[3]/textarea'
+tag_path = '//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[4]/div/div/ul/li/input'
+pub_butt_path = '//*[@id="app"]/div/div/div/div/form/button'
+
+pub_butt_pass = '//*[@id="app"]/div/div/div/div/form/button'
+del_butt_path = '//*[@id="app"]/div/div[1]/div/div/span/button'
+#del_message_path = '/html/body/div[2]/div/div'
+
+saved_arts_path = '//*[@id="app"]/div/div[2]/div/div[1]/div[2]/div/div/div'
+
+# variables
+
+email = "laci@cond.com"
+passwd = "ABcd123&"
+
+title = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 7))
+summary = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 10))
+main = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 30))
+tag = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 30))
+
+text_list = [title, summary, main, tag]
+
+# messages
+
+message1 = "The new article's ID data (the last in the article list): \n"
+message2 = "The last article's ID data after deleting the newly entered one: \n"
+message3 = "The previously entered data have been deleted !"
+message4 = "Test passed ! "
+err_message1 = "Test failed ! The the two IDs are identical !"
+
 # TEST
 
-main_window = driver.window_handles[0]
-l = len(saved_texts1)
-element_to_del = saved_texts1[l-1]
-del_element = ActionChains(driver).move_to_element(element_to_del).click().perform()
+# ..setting up environment
+
+sign_in()
 time.sleep(1)
-del_but = driver.find_element_by_xpath('//*[@id="app"]/div/div[1]/div/div/span/button')
-del_but.click()
-nl = len(saved_texts2)
+
+#.. entering new article
+
+element_by_path(new_art_butt_path).click()
 time.sleep(1)
+field_list = [element_by_path(title_path), element_by_path(summ_path), element_by_path(main_path), element_by_path(tag_path)]
+new_article(text_list, field_list)
+element_by_path(home_butt_path).click()
+time.sleep(1)
+
+ # deleting the new article
+
+new_id = article_id('last').text
+
+assign_del_el = ActionChains(driver).move_to_element(article_id('last')).click().perform()
+time.sleep(1)
+element_by_path(del_butt_path).click()
+del_message = WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[2]/div/div')))
+time.sleep(2)
+last_id = article_id('last').text
+assert new_id != last_id, err_message1
 print()
+print(f"{message1}\n{new_id}")
+print()
+print(f"{message2}\n{last_id}")
+print()
+print(message3)
+print(message4)
 
-
-#click_wait =
-#for saved_text in saved_texts1:
-    #if saved_text.click():
-        #new_window = driver.window_handles[1]
-        #driver.switch_to.window(new_window)
-        #driver.get("http://localhost:1667/#/articles")
-
-
-
+driver.quit()
 
 
 
 
-#text_feeding_in(title_text, art_title_text)
-#text_feeding_in(summ_text, art_summ_text)
-#text_feeding_in(main_text, art_body_text)
-#text_feeding_in(tag_text, art_tag_text)
 
-#pub_butt.click()
-#time.sleep(1)
-#print()
-#assert title_text == element_by_path(title_cont_path).text, err_message1
-#print(message01, message1)
-#main_text1 = main_text.replace('\n', "")
-#assert main_text1.strip() == element_by_path(main_text_cont_path).text, err_message1
-#print(message02, message1)
-#assert tag_text == element_by_path(tag_cont_path).text, err_message1
-#print(message03, message1)
-#print()
 
-#element_by_path(home_but_path).click()
-#time.sleep(1)
-#saved_texts2 = driver.find_elements_by_xpath(saved_texts_path)
-#assert len(saved_texts2) == len(saved_texts1)+1, err_message2
-#saved_text2 = saved_texts2[len(saved_texts2)-1]
-#print(message2+saved_text2.text)
-#print()
-#print(message3)
-
-#driver.close()
