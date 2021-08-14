@@ -56,10 +56,6 @@ def new_article(source_list,field_list):
         text_feeding_in(source_list[i],field_list[i])
     element_by_path(pub_butt_path).click()
 
-def text_feeding_in(text, field):
-    for letter in text:
-        field.send_keys(letter)
-
 def article_id(element_id): # element_id can be 'last' or a figure (index of element in a list)
     if element_id == 'last':
         saved_arts = elements_list_by_pass(saved_arts_path)
