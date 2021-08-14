@@ -1,4 +1,4 @@
-﻿# Testing deletion of an article entry
+﻿# Testing of the action of deleting an article entry
 #
 # ...................................................................................
 
@@ -59,12 +59,12 @@ def new_article(source_list,field_list):
 def article_id(element_id): # can be 'last' or a figure (index of element in a list)
     if element_id == 'last':
         saved_arts = elements_list_by_pass(saved_arts_path)
-        element_to_del = saved_arts[len(saved_arts) - 1]
-        return element_to_del
+        element_chosen = saved_arts[len(saved_arts) - 1]
+        return element_chosen
     else:
         saved_arts = elements_list_by_pass(saved_arts_path)
-        element_to_del = saved_arts[int(element_id)]
-        return element_to_del
+        element_chosen = saved_arts[int(element_id)]
+        return element_chosen
 
 #..elements for setting up environment and on different pages
 
@@ -81,7 +81,6 @@ main_path = '//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[3]/textarea'
 tag_path = '//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[4]/div/div/ul/li/input'
 pub_butt_path = '//*[@id="app"]/div/div/div/div/form/button'
 
-pub_butt_pass = '//*[@id="app"]/div/div/div/div/form/button'
 del_butt_path = '//*[@id="app"]/div/div[1]/div/div/span/button'
 #del_message_path = '/html/body/div[2]/div/div'
 
@@ -92,12 +91,12 @@ saved_arts_path = '//*[@id="app"]/div/div[2]/div/div[1]/div[2]/div/div/div'
 email = "laci@cond.com"
 passwd = "ABcd123&"
 
-title = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 7))
-summary = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 10))
-main = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 30))
-tag = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 30))
+title_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 7))
+summary_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 10))
+main_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 30))
+tag_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 30))
 
-text_list = [title, summary, main, tag]
+text_list = [title_text, summary_text, main_text, tag_text]
 
 # messages
 
