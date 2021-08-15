@@ -14,7 +14,7 @@ from random import randint
 import pytest
 import time
 
-import nuts_and_bolts
+#import nuts_and_bolts
 
 options = Options()
 
@@ -68,11 +68,7 @@ home_but_path = '//*[@id="app"]/nav/div/ul/li[1]/a'
 
 #..input elements
 
-art_title_text = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[1]/input')
-art_summ_text = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[2]/input')
-art_body_text = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[3]/textarea')
-art_tag_text = driver.find_element_by_xpath(
-    '//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[4]/div/div/ul/li/input')
+ 
 pub_butt = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/button')
 
 # ..containers for saved text

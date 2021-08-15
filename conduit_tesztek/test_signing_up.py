@@ -13,7 +13,8 @@ from selenium.webdriver.chrome.options import Options
 from random import randint
 import pytest
 import time
-#import nuts_and_bolts
+
+# import nuts_and_bolts
 
 options = Options()
 
@@ -23,21 +24,26 @@ options.add_argument('--disable-gpu')
 # driver = webdriver.Chrome(ChromeDriverManager().install())
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
-url = "http://localhost:1667/"
-
 # general settings for getting to sign_up window
 
+url = "http://localhost:1667/"
+
 driver.get(url)
+
 main_butts = driver.find_elements_by_xpath('//*[@id="app"]/nav/div/ul/li/a')
 main_butts[2].click()
 
-
 # data - elements, variables etc.
 
-#reg_failed = "/html/body/div[2]/div/div[2]"
+    # elements
+
+warn_window_title_path = "/html/body/div[2]/div/div[2]"
 warn_window_path = "/html/body/div[2]/div"
 warn_text_path = "/html/body/div[2]/div/div[3]"
 warn_accept_path = "/html/body/div[2]/div/div[4]/div/button"
+
+    # messages
+
 user_req = "Username field required."
 email_req = "Email field required."
 pass_req = "Password field required."
@@ -47,10 +53,14 @@ invalid_pass = "Password must be 8 characters long and include 1 number, 1 upper
 reused_email = "Email already taken."
 signup_success = "Your registration was successful!"
 
+    # variables
+
 field_val = []  # a list of "empty", "good", "bad" or "reused" according to the values
                 # one would like to give the input fields. The order is "username", "email" and "password".
+warning_title = "" # the title of the message window
+warning_text = ""  # warning or message in the jumping up window
 
-    # elements on the "sign_up" page
+# elements on the "sign_up" page
 
 elements_xpath = '//*[@id="app"]/div/div/div/div/form/'
 input_xpath = elements_xpath + 'fieldset/input'
@@ -58,30 +68,34 @@ signup_butt = driver.find_element_by_xpath(elements_xpath + 'button')
 
 # generating test data - test data dictionary ("test_data_source")
 
- # the following data could have been randomly generated (or could be on run), but at the moment I have
- # no time to find it out how
- #  Username - no restrictions (must not be empty)
- #  Email - standard email form (must not be empty)
- #  Passwords - eight character long, containing at least one uppercase letter, one lowercase letter,
- #              and one digit
+# the following data could have been randomly generated (or could be on run), but at the moment I have
+# no time to find it out how
+#  Username - no restrictions (must not be empty)
+#  Email - standard email form (must not be empty)
+#  Passwords - eight character long, containing at least one uppercase letter, one lowercase letter,
+#              and one digit
 
 test_data_source = {"Username": [["-"], ["testuserX", 1, "testuser1"]],
-                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["viki@ezaz.hu","test4@test.te",
-                                                                                       "ab@def.hu"],
+                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["viki1@ezaz.hu", "test7@test.pe",
+                                                                                       "abc@defg.hu",
+                                                                                       "teszt@teszt1.te"],
                               ["testuser@domain.uk", "testuser1@example.com", "testuser2@example.com",
-                               "testuser3@example.com","klm@no.nl", "w@rtz.bg", "test@domain.uk"]],
+                               "testuser3@example.com", "klm@no.nl", "w@rtz.bg", "test@domain.uk", "ab@defg"]],
                     "Password": [[12345678, "1Aabcde", "11111111", "ABCDEFGH", "Abcdefgh", "abcdefg1"],
                                  ["Abcdefg1", "@Abcdef1"], ["Abcd123$"]]
                     }
 
+
 # functions
 
-    # finding input field (elements)
+# finding input field (elements)
 def input_elements_list(xpath):
     input_elements = driver.find_elements_by_xpath(xpath)
     return input_elements
 
     # finding input element's names for further use (in an other app)
+
+
 def input_elements_names(element_list):
     input_names = []
     for i in range(len(element_list)):
@@ -90,6 +104,8 @@ def input_elements_names(element_list):
     return input_names
 
     # randomly getting test data for the "sign up" input fields from "empty", "good", "bad" and "used" data pools
+
+
 def get_test_data(field_val):
     result = []
     value = ""
@@ -116,12 +132,16 @@ def get_test_data(field_val):
     return result
 
     # click, clear and send new data to the field in a list, specified by ind
+
+
 def click_and_send(ind, data):
     input_elements[ind].click()
     input_elements[ind].clear()
     input_elements[ind].send_keys(data)
 
     # filling in input fields with test data
+
+
 def fill_up_input_fields(un, em, pw):
     for j in range(len(input_names)):
         input_name = input_names[j]
@@ -131,8 +151,9 @@ def fill_up_input_fields(un, em, pw):
             click_and_send(j, em)
         if input_name == "Password":
             click_and_send(j, pw)
-    print(f"Új tesztadatok: {un}, {em}, { pw}")
-            
+    print(f"Új tesztadatok: {un}, {em}, {pw}")
+
+
 # warning windows and messages ("Value_list" a list of 'empty' or 'bad' or 'good',or 'used' the values
 #                               corresponding with  entry values of 'test_data_list')
 def warning(value_list):
@@ -142,7 +163,7 @@ def warning(value_list):
     global warn_accept_butt
     warn_accept_butt = driver.find_element_by_xpath(warn_accept_path)
     if warning.is_displayed:
-        #for i in range(len(value_list)):
+        # for i in range(len(value_list)):
         if value_list[0] == "empty":
             return user_req
         if value_list[1] == "empty":
@@ -157,7 +178,8 @@ def warning(value_list):
             return reused_email
         if value_list[1] == "good":
             return signup_success
-        
+
+
 try:
     # start testing under different conditions
 
@@ -176,7 +198,7 @@ try:
     assert warning(field_val) == warning_text
 
     print("TC01 - empty fields")
-    print("Test passed - Message: " +warning_text)
+    print("Test passed - Message: " + warning_text)
     print()
     warn_accept_butt.click()
 
@@ -186,7 +208,7 @@ try:
     test_data_list = get_test_data(field_val)
 
     fill_up_input_fields(test_data_list[0], test_data_list[1], test_data_list[2])
-    #time.sleep(1)
+    # time.sleep(1)
     signup_butt.click()
     time.sleep(2)
 
@@ -255,11 +277,11 @@ try:
     time.sleep(2)
 
     assert warning(field_val) == warning_text
-
+    warning_title = driver.find_element_by_xpath(warn_window_title_path).text
     print("TC06 - good username, good e_mail, good password - successful sign up")
-    print("Test passed - Message: " + warning_text)
+    print("Test passed - Message: " + warning_title + "" + warning_text)
     print()
-    #warn_accept_butt.click()
+
 
 finally:
     driver.close()

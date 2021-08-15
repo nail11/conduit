@@ -16,3 +16,9 @@ def input_elements_names(element_list):
         input_name = input_elements[i].get_attribute("placeholder")
         input_names.append(input_name)
     return input_names
+
+def sign_in():
+    element_by_path(email_input_path).send_keys(email)
+    element_by_path(password_input_path).send_keys(passwd)
+    element_by_path(input_butt_path).click()
+    time.sleep(1)
