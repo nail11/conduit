@@ -19,8 +19,8 @@ import conduitdata
 
 options = Options()
 
-options.add_argument('--headless')
-options.add_argument('--disable-gpu')
+#options.add_argument('--headless')
+#options.add_argument('--disable-gpu')
 
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
@@ -56,7 +56,7 @@ def new_article(source_list,field_list):
         text_feeding_in(source_list[i],field_list[i])
     element_by_path(pub_butt_path).click()
 
-def article_id(element_id): # element_id can be 'last' or a figure (index of element in a list)
+def article_by_ord(element_id): # element_id can be 'last' or a figure (index of element in a list)
     if element_id == 'last':
         saved_arts = elements_list_by_pass(saved_arts_path)
         element_chosen = saved_arts[len(saved_arts) - 1]
@@ -65,6 +65,11 @@ def article_id(element_id): # element_id can be 'last' or a figure (index of ele
         saved_arts = elements_list_by_pass(saved_arts_path)
         element_chosen = saved_arts[int(element_id)]
         return element_chosen
+
+#def article_by_title(text):
+   # for art in saved_arts:
+       # if elements_list_by_pass(title_path).text == title_text:
+         #   return art
 
 #..elements for setting up environment and on different pages
 
@@ -113,8 +118,10 @@ err_message2 = "Test failed ! The the new entries does not contain the previous 
 
 sign_in()
 time.sleep(1)
+saved_arts = elements_list_by_pass(saved_arts_path)
 
 #.. creating new article
+
 
 element_by_path(new_art_butt_path).click()
 time.sleep(1)
@@ -125,7 +132,7 @@ time.sleep(1)
 
 # choosing the newly entered article to modify
 
-new_art = article_id('last')
+new_art = article_by_ord('last')
 assign_del_el = ActionChains(driver).move_to_element(new_art).click().perform()
 time.sleep(1)
 

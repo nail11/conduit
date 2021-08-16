@@ -26,7 +26,7 @@ driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
 # PREPARATIONS FOR GETTING TO "New Article" WINDOW
 
-url = "http://localhost:1667/#/login"   # one must be signed in to be able to search for and delete the new entry
+url = "http://localhost:1667/#/login"   # one must be signed in to make the search for new entry possible
                                         # or, in other words, to fulfil the precondition
 
 driver.get(url)
@@ -68,6 +68,11 @@ home_but_path = '//*[@id="app"]/nav/div/ul/li[1]/a'
 
 #..input elements
 
+art_title_text = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[1]/input')
+art_summ_text = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[2]/input')
+art_body_text = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[3]/textarea')
+art_tag_text = driver.find_element_by_xpath(
+    '//*[@id="app"]/div/div/div/div/form/fieldset/fieldset[4]/div/div/ul/li/input')
  
 pub_butt = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/button')
 

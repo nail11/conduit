@@ -76,7 +76,7 @@ signup_butt = driver.find_element_by_xpath(elements_xpath + 'button')
 #              and one digit
 
 test_data_source = {"Username": [["-"], ["testuserX", 1, "testuser1"]],
-                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["viki1@ezaz.hu", "test7@test.pe",
+                    "Email": [["aaa", "abc.hu", "a@hu", "a@test.", "a@.hu", "a@b.h"], ["viki1@ezaz.hu", "test8@test.pe",
                                                                                        "abc@defg.hu",
                                                                                        "teszt@teszt1.te"],
                               ["testuser@domain.uk", "testuser1@example.com", "testuser2@example.com",
