@@ -10,9 +10,11 @@ from selenium.webdriver.common.by import By
 # from selenium.webdriver.support.ui import WebDriverWait
 # from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
-from random import randint
+#from random import randint
+import random
 import pytest
 import time
+import string
 
 #import nuts_and_bolts
 
@@ -41,8 +43,8 @@ passw_field = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/
 input_butt = driver.find_element_by_xpath('//*[@id="app"]/div/div/div/div/form/button')
 new_art_butt =driver.find_element_by_xpath('//*[@id="app"]/nav/div/ul/li[2]/a')
 
-email = "testuser1@example.com"
-passwd = "Abcd123$"
+email = "laci@cond.com"
+passwd = "ABcd123&"
 
 saved_texts1 = []
 
@@ -95,11 +97,16 @@ err_message2 = "Test failed ! New entry hasn't been created !"
 
 # test data
 
-title_text = "A Tisza"
-summ_text = "Petőfi Sándor verse"
-main_text = "\n Nyári napnak alkonyúlatánál.\n Megállék a kanyargó Tiszánál\n Ott, hol a kis Túr " \
-            "siet beléje,\n Mint a gyermek anyja kebelére."
-tag_text = "vers"
+#title_text = "A Tisza"
+#summ_text = "Petőfi Sándor verse"
+#main_text = "\n Nyári napnak alkonyúlatánál.\n Megállék a kanyargó Tiszánál\n Ott, hol a kis Túr " \
+#            "siet beléje,\n Mint a gyermek anyja kebelére."
+#tag_text = "vers"
+
+title_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 7))
+summ_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 10))
+main_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 30))
+tag_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 5))
 
 # variables
 

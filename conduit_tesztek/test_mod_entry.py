@@ -98,11 +98,11 @@ email = "laci@cond.com"
 passwd = "ABcd123&"
 
 title_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 7))
-summary_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 10))
+summ_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 10))
 main_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 30))
 tag_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 5))
 
-text_list = [title_text, summary_text, main_text, tag_text]
+text_list = [title_text, summ_text, main_text, tag_text]
 
 # messages
 
