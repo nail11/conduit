@@ -110,8 +110,8 @@ with open("upload_text.txt", "r", encoding="utf-8") as text:
     text_to_upload7 = text.readlines()
 
 title_text = text_to_upload3.split()
-summ_text =  f"{text_to_upload1.split()}, {text_to_upload5}"
-main_text =  text_to_upload3
+summ_text =  text_to_upload1+text_to_upload3+","+text_to_upload5
+main_text =  text_to_upload7
 tag_text = "vers"
 
 #.. creating new article
