@@ -63,10 +63,10 @@ if cookie_panel.is_displayed():
 cookie_panel
 accept.click()
 time.sleep(1)
-assert  cookie_panel.is_displayed() != True
+assert  if cookie_panel.is_displayed() != True:
 
-print("Cookie panel is not reachable after clicking on accept button !\n")
-print("Test passed!")
+            print("Cookie panel is not reachable after clicking on accept button !\n")
+            print("Test passed!")
 
 driver.quit()
 

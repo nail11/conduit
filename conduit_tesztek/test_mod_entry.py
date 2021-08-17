@@ -51,7 +51,7 @@ def text_feeding_in(text, field):
     for letter in text:
         field.send_keys(letter)
 
-def new_article(source_list,field_list):
+def new_article_by_letter(source_list,field_list):
     for i in range(len(source_list)):
         text_feeding_in(source_list[i],field_list[i])
     element_by_path(pub_butt_path).click()
@@ -126,7 +126,7 @@ saved_arts = elements_list_by_pass(saved_arts_path)
 element_by_path(new_art_butt_path).click()
 time.sleep(1)
 field_list = [element_by_path(title_path), element_by_path(summ_path), element_by_path(main_path), element_by_path(tag_path)]
-new_article(text_list, field_list)
+new_article_by_letter(text_list, field_list)
 element_by_path(home_butt_path).click()
 time.sleep(1)
 
