@@ -1,4 +1,2 @@
-selenium==3.141.0
-urllib3==1.26.6
 pytest
 allure-pytest==2.8.40
