@@ -19,8 +19,8 @@ import conduitdata
 
 options = Options()
 
-#options.add_argument('--headless')
-#options.add_argument('--disable-gpu')
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
 
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
@@ -112,47 +112,50 @@ message3 = "The modified character chain: \n"
 message4 = "Test passed ! "
 err_message1 = "Test failed ! The the two entries are identical !"
 err_message2 = "Test failed ! The the new entries does not contain the previous or/and the modifying text!"
+
+def test_modifying_entry():
+
 # TEST
 
 # ..setting up environment
 
-sign_in()
-time.sleep(1)
-saved_arts = elements_list_by_pass(saved_arts_path)
+    sign_in()
+    time.sleep(1)
+    saved_arts = elements_list_by_pass(saved_arts_path)
 
 #.. creating new article
 
 
-element_by_path(new_art_butt_path).click()
-time.sleep(1)
-field_list = [element_by_path(title_path), element_by_path(summ_path), element_by_path(main_path), element_by_path(tag_path)]
-new_article_by_letter(text_list, field_list)
-element_by_path(home_butt_path).click()
-time.sleep(1)
+    element_by_path(new_art_butt_path).click()
+    time.sleep(1)
+    field_list = [element_by_path(title_path), element_by_path(summ_path), element_by_path(main_path), element_by_path(tag_path)]
+    new_article_by_letter(text_list, field_list)
+    element_by_path(home_butt_path).click()
+    time.sleep(1)
 
 # choosing the newly entered article to modify
 
-new_art = article_by_ord('last')
-assign_del_el = ActionChains(driver).move_to_element(new_art).click().perform()
-time.sleep(1)
+    new_art = article_by_ord('last')
+    assign_del_el = ActionChains(driver).move_to_element(new_art).click().perform()
+    time.sleep(1)
 
 # modifying the newly entered article
 
-element_by_path(edit_butt_path).click()
-text_to_modify = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 30))
-time.sleep(1)
-text_feeding_in(text_to_modify, element_by_path(main_path))
-element_by_path(pub_butt_path)
+    element_by_path(edit_butt_path).click()
+    text_to_modify = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 30))
+    time.sleep(1)
+    text_feeding_in(text_to_modify, element_by_path(main_path))
+    element_by_path(pub_butt_path)
 
 # read the contain of the "main-text" field ("element_by_path(main_path") and set up assertions
 
-modified_text = element_by_path(main_path).get_attribute('value')
+    modified_text = element_by_path(main_path).get_attribute('value')
 
-assert main_text != modified_text,err_message1
-assert main_text in modified_text and text_to_modify in modified_text, err_message2
-print()
-print(f"{message1}{main_text}\n")
-print(f"{message2}{text_to_modify}\n")
-print(f"{message3}{modified_text}\n")
-print(message4)
-driver.quit()
+    assert main_text != modified_text,err_message1
+    assert main_text in modified_text and text_to_modify in modified_text, err_message2
+    print()
+    print(f"{message1}{main_text}\n")
+    print(f"{message2}{text_to_modify}\n")
+    print(f"{message3}{modified_text}\n")
+    print(message4)
+    driver.quit()

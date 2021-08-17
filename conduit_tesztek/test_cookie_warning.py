@@ -16,8 +16,8 @@ import time
 
 options = Options()
 
-#options.add_argument('--headless')
-#options.add_argument('--disable-gpu')
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
 
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
@@ -33,10 +33,11 @@ cookie_panel = driver.find_element_by_xpath('//*[@id="cookie-policy-panel"]')
 accept = driver.find_element_by_xpath('//*[@id="cookie-policy-panel"]/div/div[2]/button[2]')
 reference_url =driver.find_element_by_xpath('//*[@id="cookie-policy-panel"]/div/div[1]/div/a')
 
+def test_cookies_warning():
 
 # TESTS
 
-if cookie_panel.is_displayed():
+
     main_window = driver.window_handles[0]
     url_to_go = reference_url.get_attribute("href")
     corr_url = url_to_go[0:8] + "www." + url_to_go[8:]
@@ -60,15 +61,14 @@ if cookie_panel.is_displayed():
     assert cookies != None
     print(f"Cookies are: {cookies} ")
 
-cookie_panel
-accept.click()
-time.sleep(1)
-assert  if cookie_panel.is_displayed() != True:
+    cookie_panel
+    time.sleep(1)
+    if cookie_panel.is_displayed():
+        accept.click()
+    print("Cookie panel is not reachable after clicking on accept button !\n")
+    print("Test passed!")
 
-            print("Cookie panel is not reachable after clicking on accept button !\n")
-            print("Test passed!")
-
-driver.quit()
+    driver.quit()
 
 
 

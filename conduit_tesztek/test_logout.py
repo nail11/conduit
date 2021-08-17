@@ -66,36 +66,37 @@ def element_by_selector(sel):
     element = driver.find_elements_by_css_selector(sel)
     return element
 
+def test_logout():
 
 # Test
 
-element_by_path(email_input).send_keys(email)
-element_by_path(password_input).send_keys(passw)
-element_by_path(input_butt).click()
+    element_by_path(email_input).send_keys(email)
+    element_by_path(password_input).send_keys(passw)
+    element_by_path(input_butt).click()
 
-time.sleep(1)
-head_butts1 = element_by_selector(head_butt_selector)
-for button1 in head_butts1:
-    buttons1.append(button1.text)
+    time.sleep(1)
+    head_butts1 = element_by_selector(head_butt_selector)
+    for button1 in head_butts1:
+        buttons1.append(button1.text)
 
-logout_button = element_by_path(log_out_butt)
+    logout_button = element_by_path(log_out_butt)
 
-if logout_button.is_displayed():
-    logout_text = logout_button.text
-    logout_button.click()
+    if logout_button.is_displayed():
+        logout_text = logout_button.text
+        logout_button.click()
 
-time.sleep(1)
-head_butts2 = element_by_selector(head_butt_selector)
-for button2 in head_butts2:
-    buttons2.append(button2.text)
+    time.sleep(1)
+    head_butts2 = element_by_selector(head_butt_selector)
+    for button2 in head_butts2:
+        buttons2.append(button2.text)
 
-assert (logout_text in buttons1) and (logout_text not in buttons2)
-print(message1)
-print(buttons1[0:5])
-print()
-print(message2)
-print(buttons2[0:3])
-print()
-print(message3)
+    assert (logout_text in buttons1) and (logout_text not in buttons2)
+    print(message1)
+    print(buttons1[0:5])
+    print()
+    print(message2)
+    print(buttons2[0:3])
+    print()
+    print(message3)
 
-driver.close()
+    driver.close()

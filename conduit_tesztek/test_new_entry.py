@@ -97,12 +97,6 @@ err_message2 = "Test failed ! New entry hasn't been created !"
 
 # test data
 
-#title_text = "A Tisza"
-#summ_text = "Petőfi Sándor verse"
-#main_text = "\n Nyári napnak alkonyúlatánál.\n Megállék a kanyargó Tiszánál\n Ott, hol a kis Túr " \
-#            "siet beléje,\n Mint a gyermek anyja kebelére."
-#tag_text = "vers"
-
 title_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 7))
 summ_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 10))
 main_text = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase, k = 30))
@@ -129,31 +123,31 @@ def text_feeding_in(text, field):
         field.send_keys(letter)
 
 # TEST
+def test_logout():
+    text_feeding_in(title_text, art_title_text)
+    text_feeding_in(summ_text, art_summ_text)
+    text_feeding_in(main_text, art_body_text)
+    text_feeding_in(tag_text, art_tag_text)
 
-text_feeding_in(title_text, art_title_text)
-text_feeding_in(summ_text, art_summ_text)
-text_feeding_in(main_text, art_body_text)
-text_feeding_in(tag_text, art_tag_text)
+    pub_butt.click()
+    time.sleep(1)
+    print()
+    assert title_text == element_by_path(title_cont_path).text, err_message1
+    print(message01, message1)
+    main_text1 = main_text.replace('\n', "")
+    assert main_text1.strip() == element_by_path(main_text_cont_path).text, err_message1
+    print(message02, message1)
+    assert tag_text == element_by_path(tag_cont_path).text, err_message1
+    print(message03, message1)
+    print()
 
-pub_butt.click()
-time.sleep(1)
-print()
-assert title_text == element_by_path(title_cont_path).text, err_message1
-print(message01, message1)
-main_text1 = main_text.replace('\n', "")
-assert main_text1.strip() == element_by_path(main_text_cont_path).text, err_message1
-print(message02, message1)
-assert tag_text == element_by_path(tag_cont_path).text, err_message1
-print(message03, message1)
-print()
+    element_by_path(home_but_path).click()
+    time.sleep(1)
+    saved_texts2 = driver.find_elements_by_xpath(saved_texts_path)
+    assert len(saved_texts2) == len(saved_texts1)+1, err_message2
+    saved_text2 = saved_texts2[len(saved_texts2)-1]
+    print(message2+saved_text2.text)
+    print()
+    print(message3)
 
-element_by_path(home_but_path).click()
-time.sleep(1)
-saved_texts2 = driver.find_elements_by_xpath(saved_texts_path)
-assert len(saved_texts2) == len(saved_texts1)+1, err_message2
-saved_text2 = saved_texts2[len(saved_texts2)-1]
-print(message2+saved_text2.text)
-print()
-print(message3)
-
-driver.quit()
+    driver.quit()

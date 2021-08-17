@@ -89,47 +89,47 @@ err_message1 = "Test failed ! The the two data are not identical !"
 # TEST
 
 # ..setting up environment
-
-sign_in()
-time.sleep(1)
+def test_pagination():
+    sign_in()
+    time.sleep(1)
 
 # .. collecting data from the app
 
-art_entries0 = elements_list_by_pass(saved_arts_path)
-art_entries_num0 = len(art_entries0)
-nav_butts = elements_list_by_pass(nav_butts_path)
-nav_butt_num = len(nav_butts)
-last_art_entries0_id = art_entries0[art_entries_num0-1].text
+    art_entries0 = elements_list_by_pass(saved_arts_path)
+    art_entries_num0 = len(art_entries0)
+    nav_butts = elements_list_by_pass(nav_butts_path)
+    nav_butt_num = len(nav_butts)
+    last_art_entries0_id = art_entries0[art_entries_num0-1].text
 
 # turning page by clicking on navigation buttons and count element on the pages
 
-for i in range(nav_butt_num):
-    nav_butts[i].click()
-    time.sleep(1)
-    art_entries1= elements_list_by_pass(saved_arts_path)
-    art_entries_num1 = len(art_entries1)
-    last_art_entries1_id = art_entries1[art_entries_num1 - 1].text
-    elements_on_page.append(art_entries_num1)
+    for i in range(nav_butt_num):
+        nav_butts[i].click()
+        time.sleep(1)
+        art_entries1= elements_list_by_pass(saved_arts_path)
+        art_entries_num1 = len(art_entries1)
+        last_art_entries1_id = art_entries1[art_entries_num1 - 1].text
+        elements_on_page.append(art_entries_num1)
 
 # calculating test data, based on the number of entries which can be compared with the real data
 
-page_num_shouldbe = art_entries_num0//10+1                          # calculating page numbers
-last_page_art_num = art_entries_num0%10                             # calculating the  number of entry  on the last page
-elements_on_last_page = elements_on_page[len(elements_on_page)-1]
+    page_num_shouldbe = art_entries_num0//10+1                          # calculating page numbers
+    last_page_art_num = art_entries_num0%10                             # calculating the  number of entry  on the last page
+    elements_on_last_page = elements_on_page[len(elements_on_page)-1]
 
-assert page_num_shouldbe == nav_butt_num
-assert last_page_art_num == elements_on_last_page
-assert last_art_entries0_id == last_art_entries1_id
+    assert page_num_shouldbe == nav_butt_num
+    assert last_page_art_num == elements_on_last_page
+    assert last_art_entries0_id == last_art_entries1_id
 
-print()
-print(message1)
-print()
-print(message2)
-print(f"{page_num_shouldbe} == {nav_butt_num}\n")
-print(message3)
-print(f"{last_page_art_num} == {elements_on_last_page}\n")
-print(message4)
-print(f"{last_art_entries0_id} \n == \n {last_art_entries1_id}\n")
-print(message5)
+    print()
+    print(message1)
+    print()
+    print(message2)
+    print(f"{page_num_shouldbe} == {nav_butt_num}\n")
+    print(message3)
+    print(f"{last_page_art_num} == {elements_on_last_page}\n")
+    print(message4)
+    print(f"{last_art_entries0_id} \n == \n {last_art_entries1_id}\n")
+    print(message5)
 
-driver.close()
+    driver.close()

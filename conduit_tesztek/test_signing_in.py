@@ -71,127 +71,128 @@ def element_by_path(xpath):
     return element
 
 # Test cases
+def test_signing_in():
+    if element_by_path(window_title_path).text == "Sign in":
+        email = ""
+        for email in emails:
 
-if element_by_path(window_title_path).text == "Sign in":
-    email = ""
-    for email in emails:
+            if email == emails[0]:
+                element_by_path(email_input).clear()
+                element_by_path(email_input).send_keys(emails[0])
+                element_by_path(password_input).clear()
+                element_by_path(password_input).send_keys(passwds[2])
+                element_by_path(input_butt_path).click()
+                time.sleep(1)
+                assert element_by_path(win_elements[1]).text == message_elements[0]
+                print()
+                print(f"Test data: email= '{emails[0]}', password (acceptable)= '{passwds[2]}'")
+                print(element_by_path(win_elements[0]).text)
+                print(element_by_path(win_elements[1]).text)
+                print()
 
-        if email == emails[0]:
-            element_by_path(email_input).clear()
-            element_by_path(email_input).send_keys(emails[0])
-            element_by_path(password_input).clear()
-            element_by_path(password_input).send_keys(passwds[2])
-            element_by_path(input_butt_path).click()
-            time.sleep(1)
-            assert element_by_path(win_elements[1]).text == message_elements[0]
-            print(f"Test data: email= '{emails[0]}', password (acceptable)= '{passwds[2]}'")
-            print(element_by_path(win_elements[0]).text)
-            print(element_by_path(win_elements[1]).text)
-            print()
+                element_by_path(warn_accept_path).click()
 
-            element_by_path(warn_accept_path).click()
+            if email == emails[1]:
+                element_by_path(email_input).clear()
+                element_by_path(email_input).send_keys(emails[1])
+                element_by_path(password_input).clear()
+                element_by_path(password_input).send_keys(passwds[2])
+                element_by_path(input_butt_path).click()
+                time.sleep(1)
+                assert element_by_path(win_elements[1]).text == message_elements[1]
+                print(f"Test data: email= '{emails[1]}', password (acceptable)= '{passwds[2]}'")
+                print(element_by_path(win_elements[0]).text)
+                print(element_by_path(win_elements[1]).text)
+                print()
 
-        if email == emails[1]:
-            element_by_path(email_input).clear()
-            element_by_path(email_input).send_keys(emails[1])
-            element_by_path(password_input).clear()
-            element_by_path(password_input).send_keys(passwds[2])
-            element_by_path(input_butt_path).click()
-            time.sleep(1)
-            assert element_by_path(win_elements[1]).text == message_elements[1]
-            print(f"Test data: email= '{emails[1]}', password (acceptable)= '{passwds[2]}'")
-            print(element_by_path(win_elements[0]).text)
-            print(element_by_path(win_elements[1]).text)
-            print()
+                element_by_path(warn_accept_path).click()
 
-            element_by_path(warn_accept_path).click()
+            if email == emails[2]:
+                element_by_path(email_input).clear()
+                element_by_path(email_input).send_keys(emails[2])
+                element_by_path(password_input).clear()
+                element_by_path(password_input).send_keys(passwds[2])
+                element_by_path(input_butt_path).click()
+                time.sleep(1)
+                assert element_by_path(win_elements[1]).text == message_elements[2]
+                print(f"Test data: email= '{emails[2]}', password (acceptable)= '{passwds[2]}'")
+                print(element_by_path(win_elements[0]).text)
+                print(element_by_path(win_elements[1]).text)
+                print()
 
-        if email == emails[2]:
-            element_by_path(email_input).clear()
-            element_by_path(email_input).send_keys(emails[2])
-            element_by_path(password_input).clear()
-            element_by_path(password_input).send_keys(passwds[2])
-            element_by_path(input_butt_path).click()
-            time.sleep(1)
-            assert element_by_path(win_elements[1]).text == message_elements[2]
-            print(f"Test data: email= '{emails[2]}', password (acceptable)= '{passwds[2]}'")
-            print(element_by_path(win_elements[0]).text)
-            print(element_by_path(win_elements[1]).text)
-            print()
+                element_by_path(warn_accept_path).click()
 
-            element_by_path(warn_accept_path).click()
+            if email == emails[3]:
+                element_by_path(email_input).clear()
+                element_by_path(email_input).send_keys(emails[2])
+                element_by_path(password_input).clear()
+                element_by_path(password_input).send_keys(passwds[2])
+                element_by_path(input_butt_path).click()
+                time.sleep(1)
+                assert element_by_path(win_elements[1]).text == message_elements[2]
+                print(f"Test data: email= '{emails[3]}', password (acceptable)= '{passwds[2]}'")
+                print(element_by_path(win_elements[0]).text)
+                print(element_by_path(win_elements[1]).text)
+                print()
 
-        if email == emails[3]:
-            element_by_path(email_input).clear()
-            element_by_path(email_input).send_keys(emails[2])
-            element_by_path(password_input).clear()
-            element_by_path(password_input).send_keys(passwds[2])
-            element_by_path(input_butt_path).click()
-            time.sleep(1)
-            assert element_by_path(win_elements[1]).text == message_elements[2]
-            print(f"Test data: email= '{emails[3]}', password (acceptable)= '{passwds[2]}'")
-            print(element_by_path(win_elements[0]).text)
-            print(element_by_path(win_elements[1]).text)
-            print()
+                element_by_path(warn_accept_path).click()
 
-            element_by_path(warn_accept_path).click()
+        element_by_path(email_input).clear()
+        element_by_path(email_input).send_keys(emails[3])
 
-    element_by_path(email_input).clear()
-    element_by_path(email_input).send_keys(emails[3])
+        passwd = ""
+        for passwd in passwds:
 
-    passwd = ""
-    for passwd in passwds:
+            if passwd == passwds[0]:
+                element_by_path(password_input).clear()
+                element_by_path(password_input).send_keys(passwds[0])
+                element_by_path(input_butt_path).click()
+                time.sleep(1)
+                assert element_by_path(win_elements[1]).text == message_elements[2]
+                print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[0]}'")
+                print(element_by_path(win_elements[0]).text)
+                print(element_by_path(win_elements[1]).text)
+                print()
 
-        if passwd == passwds[0]:
-            element_by_path(password_input).clear()
-            element_by_path(password_input).send_keys(passwds[0])
-            element_by_path(input_butt_path).click()
-            time.sleep(1)
-            assert element_by_path(win_elements[1]).text == message_elements[2]
-            print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[0]}'")
-            print(element_by_path(win_elements[0]).text)
-            print(element_by_path(win_elements[1]).text)
-            print()
+                element_by_path(warn_accept_path).click()
 
-            element_by_path(warn_accept_path).click()
+            if passwd == passwds[1]:
+                element_by_path(password_input).clear()
+                element_by_path(password_input).send_keys(passwds[1])
+                element_by_path(input_butt_path).click()
+                time.sleep(1)
+                assert element_by_path(win_elements[1]).text == message_elements[2]
+                print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[1]}'")
+                print(element_by_path(win_elements[0]).text)
+                print(element_by_path(win_elements[1]).text)
+                print()
 
-        if passwd == passwds[1]:
-            element_by_path(password_input).clear()
-            element_by_path(password_input).send_keys(passwds[1])
-            element_by_path(input_butt_path).click()
-            time.sleep(1)
-            assert element_by_path(win_elements[1]).text == message_elements[2]
-            print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[1]}'")
-            print(element_by_path(win_elements[0]).text)
-            print(element_by_path(win_elements[1]).text)
-            print()
+                element_by_path(warn_accept_path).click()
 
-            element_by_path(warn_accept_path).click()
+            if passwd == passwds[2]:
+                element_by_path(password_input).clear()
+                element_by_path(password_input).send_keys(passwds[2])
+                element_by_path(input_butt_path).click()
+                time.sleep(1)
+                assert element_by_path(win_elements[1]).text == message_elements[2]
+                print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[2]}'")
+                print(element_by_path(win_elements[0]).text)
+                print(element_by_path(win_elements[1]).text)
+                print()
 
-        if passwd == passwds[2]:
-            element_by_path(password_input).clear()
-            element_by_path(password_input).send_keys(passwds[2])
-            element_by_path(input_butt_path).click()
-            time.sleep(1)
-            assert element_by_path(win_elements[1]).text == message_elements[2]
-            print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[2]}'")
-            print(element_by_path(win_elements[0]).text)
-            print(element_by_path(win_elements[1]).text)
-            print()
+                element_by_path(warn_accept_path).click()
 
-            element_by_path(warn_accept_path).click()
-
-        if passwd == passwds[3]:
-            element_by_path(password_input).clear()
-            element_by_path(password_input).send_keys(passwds[3])
-            element_by_path(input_butt_path).click()
-            time.sleep(1)
-            assert element_by_path(user_name_path).is_displayed()
-            assert element_by_path(user_name_path).text == emails[3][0:9]
-            print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[3]}'")
-            print(f"User name: {emails[3][0:9]}")
-            print(success)
-driver.close()
+            if passwd == passwds[3]:
+                element_by_path(password_input).clear()
+                element_by_path(password_input).send_keys(passwds[3])
+                element_by_path(input_butt_path).click()
+                time.sleep(1)
+                assert element_by_path(user_name_path).is_displayed()
+                assert element_by_path(user_name_path).text == emails[3][0:9]
+                print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[3]}'")
+                print(f"User name: {emails[3][0:9]}")
+                print(success)
+    driver.close()
 
 
 

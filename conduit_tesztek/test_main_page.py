@@ -53,14 +53,14 @@ def button_test(butts):
         print(button.get_attribute("href"))
         print()
 
-
+def test_main_page():
 #TC .. testing main page button's availability and function
 
-print("TC .. testing main page button's availability and function\n")
+    print("TC .. testing main page button's availability and function\n")
 
-button_test(butts)
-home_butt.click()
+    button_test(butts)
+    home_butt.click()
 
-print("Test passed!")
+    print("Test passed!")
 
-driver.close()
+    driver.close()

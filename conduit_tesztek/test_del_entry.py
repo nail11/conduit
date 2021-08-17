@@ -106,42 +106,44 @@ message3 = "The previously entered data have been deleted !"
 message4 = "Test passed ! "
 err_message1 = "Test failed ! The the two IDs are identical !"
 
+def test_delete_entry():
+
 # TEST
 
 # ..setting up environment
 
-sign_in()
-time.sleep(1)
+    sign_in()
+    time.sleep(1)
 
 #.. entering new article
 
-element_by_path(new_art_butt_path).click()
-time.sleep(1)
-field_list = [element_by_path(title_path), element_by_path(summ_path), element_by_path(main_path), element_by_path(tag_path)]
-new_article(text_list, field_list)
-element_by_path(home_butt_path).click()
-time.sleep(1)
+    element_by_path(new_art_butt_path).click()
+    time.sleep(1)
+    field_list = [element_by_path(title_path), element_by_path(summ_path), element_by_path(main_path), element_by_path(tag_path)]
+    new_article(text_list, field_list)
+    element_by_path(home_butt_path).click()
+    time.sleep(1)
 
  # deleting the new article
 
-new_id = article_id('last').text
+    new_id = article_id('last').text
 
-assign_del_el = ActionChains(driver).move_to_element(article_id('last')).click().perform()
-time.sleep(1)
-element_by_path(del_butt_path).click()
-del_message = WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[2]/div/div')))
-time.sleep(2)
-last_id = article_id('last').text
-assert new_id != last_id, err_message1
-print()
-print(f"{message1}\n{new_id}")
-print()
-print(f"{message2}\n{last_id}")
-print()
-print(message3)
-print(message4)
+    assign_del_el = ActionChains(driver).move_to_element(article_id('last')).click().perform()
+    time.sleep(1)
+    element_by_path(del_butt_path).click()
+    del_message = WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[2]/div/div')))
+    time.sleep(2)
+    last_id = article_id('last').text
+    assert new_id != last_id, err_message1
+    print()
+    print(f"{message1}\n{new_id}")
+    print()
+    print(f"{message2}\n{last_id}")
+    print()
+    print(message3)
+    print(message4)
 
-driver.quit()
+    driver.quit()
 
 
 

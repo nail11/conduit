@@ -107,61 +107,62 @@ message5 = "Test passed !"
 err_message1 = "No new article !"
 err_message2 = "The saved text and the uploaded text are not identical !"
 
+def test_upload_text():
 # TEST
 
 # ..setting up environment
 
-sign_in()
-time.sleep(1)
-saved_arts1 = elements_list_by_pass(saved_arts_path)
+    sign_in()
+    time.sleep(1)
+    saved_arts1 = elements_list_by_pass(saved_arts_path)
 
 # obtaining test data (text to save in Conduit)
 
-with open("upload_text.txt", "r", encoding="utf-8") as text:
-    text_to_upload1 = text.readline()
-    text_to_upload2 = text.readline()
-    text_to_upload3 = text.readline()
-    text_to_upload4 = text.readline()
-    text_to_upload5 = text.readline()
-    text_to_upload6 = text.readline()
-    text_to_upload7 = text.readlines()
+    with open("upload_text.txt", "r", encoding="utf-8") as text:
+        text_to_upload1 = text.readline()
+        text_to_upload2 = text.readline()
+        text_to_upload3 = text.readline()
+        text_to_upload4 = text.readline()
+        text_to_upload5 = text.readline()
+        text_to_upload6 = text.readline()
+        text_to_upload7 = text.readlines()
 
-title_text = text_to_upload3.strip()
-summ_text =  f"{text_to_upload1.strip()} {text_to_upload3.strip()}, {text_to_upload5.strip()}"
-main_text =  text_to_upload7
-tag_text = "vers"
+    title_text = text_to_upload3.strip()
+    summ_text =  f"{text_to_upload1.strip()} {text_to_upload3.strip()}, {text_to_upload5.strip()}"
+    main_text =  text_to_upload7
+    tag_text = "vers"
 
 #.. creating new article
 
-element_by_path(new_art_butt_path).click()
-wait = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH, title_path)))
+    element_by_path(new_art_butt_path).click()
+    wait = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH, title_path)))
 
-text_list = [title_text,summ_text, main_text, tag_text]
-field_list = [element_by_path(title_path), element_by_path(summ_path), element_by_path(main_path), element_by_path(tag_path)]
+    text_list = [title_text,summ_text, main_text, tag_text]
+    field_list = [element_by_path(title_path), element_by_path(summ_path), element_by_path(main_path), element_by_path(tag_path)]
 
-new_article_by_text(text_list, field_list)                              # creating new article
-time.sleep(1)
-new_main_text = element_by_path(main_text_cont_path).text
-element_by_path(home_butt_path).click()
+    new_article_by_text(text_list, field_list)                              # creating new article
+    time.sleep(1)
+    new_main_text = element_by_path(main_text_cont_path).text
+    element_by_path(home_butt_path).click()
 
 #.. checking existence of the new article
 
-time.sleep(1)
-saved_arts2 = elements_list_by_pass(saved_arts_path)
-art_id = article_by_ord("last").text
-new_art_id = art_id.replace('\n','')                                    # obtaining the ID of the new article
-time.sleep(1)
-assert len(saved_arts2) == len(saved_arts1)+1, err_message1             # comparing the number of articles
-                                                                        # before and after
-print()
-print(message1)
-print(message2)
-print(f"{message3}{new_art_id}\n")
-mod_main_text = ""
-for i in range(len(main_text)):                                         # to make the two texts comparable
-    mod_main_text = mod_main_text+main_text[i]
-assert mod_main_text.replace('\n'," ") == new_main_text, err_message2   # comparing uploaded and saved texts
-print(f"{message4}\n{new_main_text}\n")
-print(message5)
+    time.sleep(1)
+    saved_arts2 = elements_list_by_pass(saved_arts_path)
+    art_id = article_by_ord("last").text
+    new_art_id = art_id.replace('\n','')                                    # obtaining the ID of the new article
+    time.sleep(1)
+    assert len(saved_arts2) == len(saved_arts1)+1, err_message1             # comparing the number of articles
+                                                                            # before and after
+    print()
+    print(message1)
+    print(message2)
+    print(f"{message3}{new_art_id}\n")
+    mod_main_text = ""
+    for i in range(len(main_text)):                                         # to make the two texts comparable
+        mod_main_text = mod_main_text+main_text[i]
+    assert mod_main_text.replace('\n'," ") == new_main_text, err_message2   # comparing uploaded and saved texts
+    print(f"{message4}\n{new_main_text}\n")
+    print(message5)
 
-driver.quit()
+    driver.quit()
