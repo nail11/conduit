@@ -20,15 +20,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup agent tools directory
-      run: |
-        sudo mkdir -p -m 777 /opt/hostedtoolcache
-        export AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
+    #- name: Setup agent tools directory
+      #run: |
+        #sudo mkdir -p -m 777 /opt/hostedtoolcache
+        #export AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
     
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
-      env:
-        AGENT_TOOLSDIRECTORY: /opt/hostedtoolcache
+      #env:
+        #AGENT_TOOLSDIRECTORY: /opt/hostedtoolcache
       with:
         python-version: 3.9
         
