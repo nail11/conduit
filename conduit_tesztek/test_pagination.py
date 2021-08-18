@@ -1,4 +1,4 @@
-# Testing of moving between pages containing articles
+# TC 19 - Testing of moving between pages containing articles
 #
 # ...................................................................................
 
@@ -122,6 +122,7 @@ def test_pagination():
     assert last_art_entries0_id == last_art_entries1_id
 
     print()
+    print("TC 19 - lapozás")
     print(message1)
     print()
     print(message2)

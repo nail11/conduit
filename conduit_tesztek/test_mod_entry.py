@@ -1,4 +1,4 @@
-# Testing of the action of modifying an article entry
+# TC 17 - Testing of the action of modifying an article entry
 #
 # ...................................................................................
 
@@ -115,7 +115,7 @@ err_message2 = "Test failed ! The the new entries does not contain the previous 
 
 def test_modifying_entry():
 
-# TEST
+# TC 17 TEST
 
 # ..setting up environment
 
@@ -153,6 +153,8 @@ def test_modifying_entry():
 
     assert main_text != modified_text,err_message1
     assert main_text in modified_text and text_to_modify in modified_text, err_message2
+    print()
+    print(("TC 17 - modifying entry"))
     print()
     print(f"{message1}{main_text}\n")
     print(f"{message2}{text_to_modify}\n")

@@ -1,4 +1,4 @@
-﻿# Testing of the action of deleting an article entry
+﻿# TC  22 -  Testing of the action of deleting an article entry
 #
 # ...................................................................................
 
@@ -135,6 +135,8 @@ def test_delete_entry():
     time.sleep(2)
     last_id = article_id('last').text
     assert new_id != last_id, err_message1
+    print()
+    print("TC 22 - deleting entry")
     print()
     print(f"{message1}\n{new_id}")
     print()

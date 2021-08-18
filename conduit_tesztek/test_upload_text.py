@@ -1,3 +1,5 @@
+# TC 23 - uploading text from file
+
 #environment
 import selenium
 from selenium import webdriver
@@ -153,7 +155,8 @@ def test_upload_text():
     new_art_id = art_id.replace('\n','')                                    # obtaining the ID of the new article
     time.sleep(1)
     assert len(saved_arts2) == len(saved_arts1)+1, err_message1             # comparing the number of articles
-                                                                            # before and after
+    print()
+    print(("TC 23 - uploadig text"))                                                                       # before and after
     print()
     print(message1)
     print(message2)

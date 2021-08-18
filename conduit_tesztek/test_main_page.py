@@ -54,9 +54,9 @@ def button_test(butts):
         print()
 
 def test_main_page():
-#TC .. testing main page button's availability and function
+#TC 15 testing main page button's availability and function
 
-    print("TC .. testing main page button's availability and function\n")
+    print("TC 15 testing main page button's availability and function\n")
 
     button_test(butts)
     home_butt.click()

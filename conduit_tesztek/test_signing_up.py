@@ -1,4 +1,4 @@
-# Testing the "sign up" function with empty,  valid ("good") invalid ("bad") and previously
+# TC 1-6 - Testing the "sign up" function with empty,  valid ("good") invalid ("bad") and previously
 # used ("used") username, password and email data
 # ...................................................................................
 

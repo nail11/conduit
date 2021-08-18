@@ -1,4 +1,4 @@
-# Testing the "log out" function with using the elements displaying on the head the window before
+# TC 18 - Testing the "log out" function with using the elements displaying on the head the window before
 # and after loging out
 # ...................................................................................
 
@@ -91,6 +91,7 @@ def test_logout():
         buttons2.append(button2.text)
 
     assert (logout_text in buttons1) and (logout_text not in buttons2)
+    print('TC 18 - log out')
     print(message1)
     print(buttons1[0:5])
     print()

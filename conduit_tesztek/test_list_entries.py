@@ -1,4 +1,4 @@
-# Making and printing out a list of a particular user's articles
+# TC 21 - Making and printing out a list of a particular user's articles
 #
 # ...................................................................................
 
@@ -143,6 +143,7 @@ def test_list_entries():
             users_articles.append(user_entries[i].text)
 
     assert len(users_articles) == len(user_entries), err_message2
+    print("TC 20 - listing and printing out entries")
     print()
     print(message1)
 

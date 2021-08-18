@@ -1,4 +1,4 @@
-# Testing the "cookie" window and the effect of accepting the warning
+# TC 20 - Testing the "cookie" window and the effect of accepting the warning
 # ...................................................................................
 
 # environment
@@ -35,7 +35,7 @@ reference_url =driver.find_element_by_xpath('//*[@id="cookie-policy-panel"]/div/
 
 def test_cookies_warning():
 
-# TESTS
+# TC 21 - TESTS
 
 
     main_window = driver.window_handles[0]
@@ -51,6 +51,7 @@ def test_cookies_warning():
 
     assert learn_url == corr_url
     print()
+    print("TC 20 - testing cookies' window")
     print("Test case .. - testing cookies allert\n")
     print(f"The link '{learn_url}' has been opened !")
 

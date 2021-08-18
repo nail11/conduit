@@ -58,7 +58,7 @@ saved_texts1 = driver.find_elements_by_xpath(saved_texts_path)
 new_art_butt.click()
 time.sleep(1)
 
-# MAIN TASK
+# TC 16 MAIN TASK
 
 # data - elements, variables etc.
 
@@ -122,7 +122,7 @@ def text_feeding_in(text, field):
     for letter in text:
         field.send_keys(letter)
 
-# TEST
+# TEST TC 16
 def test_logout():
     text_feeding_in(title_text, art_title_text)
     text_feeding_in(summ_text, art_summ_text)
@@ -131,6 +131,8 @@ def test_logout():
 
     pub_butt.click()
     time.sleep(1)
+    print()
+    print("TC 16 - new article entry")
     print()
     assert title_text == element_by_path(title_cont_path).text, err_message1
     print(message01, message1)

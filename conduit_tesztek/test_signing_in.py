@@ -85,6 +85,8 @@ def test_signing_in():
                 time.sleep(1)
                 assert element_by_path(win_elements[1]).text == message_elements[0]
                 print()
+                print("TC 07\n")
+                print()
                 print(f"Test data: email= '{emails[0]}', password (acceptable)= '{passwds[2]}'")
                 print(element_by_path(win_elements[0]).text)
                 print(element_by_path(win_elements[1]).text)
@@ -100,6 +102,7 @@ def test_signing_in():
                 element_by_path(input_butt_path).click()
                 time.sleep(1)
                 assert element_by_path(win_elements[1]).text == message_elements[1]
+                print("TC 08\n")
                 print(f"Test data: email= '{emails[1]}', password (acceptable)= '{passwds[2]}'")
                 print(element_by_path(win_elements[0]).text)
                 print(element_by_path(win_elements[1]).text)
@@ -115,6 +118,7 @@ def test_signing_in():
                 element_by_path(input_butt_path).click()
                 time.sleep(1)
                 assert element_by_path(win_elements[1]).text == message_elements[2]
+                print("TC 09\n")
                 print(f"Test data: email= '{emails[2]}', password (acceptable)= '{passwds[2]}'")
                 print(element_by_path(win_elements[0]).text)
                 print(element_by_path(win_elements[1]).text)
@@ -130,6 +134,7 @@ def test_signing_in():
                 element_by_path(input_butt_path).click()
                 time.sleep(1)
                 assert element_by_path(win_elements[1]).text == message_elements[2]
+                print("TC 10\n")
                 print(f"Test data: email= '{emails[3]}', password (acceptable)= '{passwds[2]}'")
                 print(element_by_path(win_elements[0]).text)
                 print(element_by_path(win_elements[1]).text)
@@ -149,6 +154,7 @@ def test_signing_in():
                 element_by_path(input_butt_path).click()
                 time.sleep(1)
                 assert element_by_path(win_elements[1]).text == message_elements[2]
+                print("TC 11\n")
                 print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[0]}'")
                 print(element_by_path(win_elements[0]).text)
                 print(element_by_path(win_elements[1]).text)
@@ -162,6 +168,7 @@ def test_signing_in():
                 element_by_path(input_butt_path).click()
                 time.sleep(1)
                 assert element_by_path(win_elements[1]).text == message_elements[2]
+                print("TC 12\n")
                 print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[1]}'")
                 print(element_by_path(win_elements[0]).text)
                 print(element_by_path(win_elements[1]).text)
@@ -175,7 +182,8 @@ def test_signing_in():
                 element_by_path(input_butt_path).click()
                 time.sleep(1)
                 assert element_by_path(win_elements[1]).text == message_elements[2]
-                print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[2]}'")
+                print("TC 13\n")
+                print(f"Test data: email (acceptable)= '{emails[2]}', password = '{passwds[2]}'")
                 print(element_by_path(win_elements[0]).text)
                 print(element_by_path(win_elements[1]).text)
                 print()
@@ -188,6 +196,7 @@ def test_signing_in():
                 element_by_path(input_butt_path).click()
                 time.sleep(1)
                 assert element_by_path(user_name_path).is_displayed()
+                print("TC 14\n")
                 assert element_by_path(user_name_path).text == emails[3][0:9]
                 print(f"Test data: email (acceptable)= '{emails[3]}', password = '{passwds[3]}'")
                 print(f"User name: {emails[3][0:9]}")
