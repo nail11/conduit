@@ -1,4 +1,4 @@
-# Testing the action of adding a new article entry
+#TC16 -  Testing the action of adding a new article entry
 #
 # ...................................................................................
 
